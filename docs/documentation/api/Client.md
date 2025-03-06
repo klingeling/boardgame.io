@@ -1,7 +1,6 @@
 # Client
 
-Creates a `boardgame.io` client. This is the entry point for
-the client application.
+创建一个 `boardgame.io`客户端。这是客户端应用程序的入口点。
 
 <!-- tabs:start -->
 
@@ -13,9 +12,9 @@ the client application.
 import { Client } from 'boardgame.io/client';
 ```
 
-### Creating a client
+### 创建一个客户端
 
-#### Arguments
+#### 参数
 
 1. `options` (_object_): An object with the following options:
 
