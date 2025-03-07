@@ -5,7 +5,7 @@
   - [多人游戏](multiplayer.md)
   - [回合顺序](turn-order.md)
   - [游戏阶段](phases.md)
-  - [子阶段](stages.md)
+  - [步骤](stages.md)
   - [事件](events.md)
   - [撤销 / 重做](undo.md)
   - [随机性](random.md)

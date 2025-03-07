@@ -1,11 +1,11 @@
-# Tutorial
+# 教程
 
-This tutorial walks through a simple game of Tic-Tac-Toe.
+本教程将引导您完成一个简单的井字棋游戏。
 
-?> We’re going to be running commands from a terminal and using Node.js/npm.
-   If you haven’t done that before, you might want to read [an introduction to the command line][cmd]
-   and follow [the instructions on how to install Node][node]. You’ll also want
-   a text editor to write code in like [VS Code][vsc] or [Atom][atom].
+?> 我们将从终端运行命令并使用 Node.js/npm。
+   如果你之前没有做过这些, 您可能需要先阅读[命令行入门指南][cmd]
+   并按照[如何安装 Node][node]。你还需要一个文本编辑器来编写代码, 
+   比如 [VS Code][vsc] 或 [Atom][atom]。
 
 [node]: https://nodejs.dev/learn/how-to-install-nodejs
 [cmd]: https://tutorial.djangogirls.org/en/intro_to_command_line/
@@ -14,23 +14,21 @@ This tutorial walks through a simple game of Tic-Tac-Toe.
 
 
 
-## Setup
+## 设置
 
-We’re going to use ES2015 features like module [imports](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-and the [object spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)
-syntax, so we’ll need to use some kind of build system to compile
-our code for the browser.
+我们将使用 ES2015 的特性, 比如模块的 [导入](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+和[对象展开](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)
+语法, 因此我们需要使用某种构建系统来为浏览器编译我们的代码。
 
-This tutorial shows two different approaches: one using [React](https://reactjs.org/),
-the other using basic browser APIs and compiling our app with
-[Parcel](https://parceljs.org/).
-You can follow whichever you feel most comfortable with.
+本教程展示了两种不同的方法: 一种是使用 [React](https://reactjs.org/),
+另一种是使用基本的浏览器 API, 并通过 [Parcel](https://parceljs.org/) 编译我们的应用。
+你可以选择您感觉更舒服的方式。
 
 <!-- tabs:start -->
 
-### **Plain JS**
+### **纯 JS**
 
-Let’s create a new Node project from the command line:
+让我们从命令行创建一个新的 Node 项目:
 
 ```
 mkdir bgio-tutorial
@@ -38,13 +36,13 @@ cd bgio-tutorial
 npm init --yes
 ```
 
-?> These commands will make a new directory called `bgio-tutorial`,
-   change to that directory, and initialise a new Node package.
-   [Read more in the Node Package Manager docs.][pkgjson]
+?> 这些命令将创建一个名为 `bgio-tutorial` 的新目录,
+   切换到该目录, 并初始化一个新的 Node 包。 
+   [在 Node 包管理器文档中了解更多。][pkgjson]
 
 [pkgjson]: https://docs.npmjs.com/creating-a-package-json-file#creating-a-default-packagejson-file
 
-We’re going to add boardgame.io and also Parcel to help us build our app:
+我们将添加 boardgame.io 和 Parcel 来帮助我们构建应用:
 
 ```
 npm install boardgame.io
@@ -52,22 +50,22 @@ npm install --save-dev parcel-bundler
 ```
 
 
-Now, let’s create the basic structure our project needs:
+现在, 让我们创建项目所需的基本结构:
 
 
-1. A JavaScript file for our web app at `src/App.js`.
+1. 一个用于我们 Web 应用的 JavaScript 文件位于 `src/App.js`.
 
 
-2. A JavaScript file for our game definition at `src/Game.js`.
+2. 一个用于我们游戏定义的 JavaScript 文件位于 `src/Game.js`.
 
 
-3. A basic HTML page that will load our app at `index.html`:
+3. 一个基本的 HTML 页面, 用于加载我们的应用位于 `index.html`:
 
     ```html
     <!DOCTYPE html>
     <html>
     <head>
-      <title>boardgame.io Tutorial</title>
+      <title>boardgame.io 教程</title>
       <meta charset="utf-8" />
     </head>
     <body>
@@ -77,7 +75,7 @@ Now, let’s create the basic structure our project needs:
     </html>
     ```
 
-Your project directory should now look like this:
+你的项目目录现在应该如下所示:
 
     bgio-tutorial/
     ├── index.html
@@ -88,16 +86,16 @@ Your project directory should now look like this:
         ├── App.js
         └── Game.js
 
-Looking good? OK, let’s get started! 🚀
+看起来不错？好的, 让我们开始吧! 🚀
 
-?> You can check out the complete code for this tutorial
-and play around with it on CodeSandbox:<br/><br/>
+?> 你可以查看本教程的完整代码, 并
+在 CodeSandbox 上试玩:<br/><br/>
 [![Edit bgio-plain-js-tutorial](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/bgio-plain-js-tutorial-ewyyt?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.js&theme=dark)
 
 ### **React**
 
-We’ll use the [create-react-app](https://create-react-app.dev/)
-command line tool to initialize our React app and then add boardgame.io to it.
+我们将使用 [create-react-app](https://create-react-app.dev/)
+命令行工具来初始化我们的 React 应用程序, 然后将 boardgame.io 添加到其中。
 
 ```
 npx create-react-app bgio-tutorial
@@ -105,14 +103,14 @@ cd bgio-tutorial
 npm install boardgame.io
 ```
 
-While we’re here, let’s also create an empty JavaScript file for our game code:
+既然我们在这里, 也让我们为游戏代码创建一个空的 JavaScript 文件：
 
 ```
 touch src/Game.js
 ```
 
-?> You can check out the complete code for this tutorial
-and play around with it on CodeSandbox:<br/><br/>
+?> 您可以查看本教程的完整代码, 并
+在 CodeSandbox 上试玩:<br/><br/>
 [![Edit boardgame.io](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/boardgameio-wlvi2)
 
 <!-- tabs:end -->
