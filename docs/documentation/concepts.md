@@ -1,15 +1,15 @@
-# Concepts
+# 概念
 
-### State
+### 状态
 
-boardgame.io captures game state in two objects: `G` and `ctx`.
+boardgame.io 通过两个对象捕获游戏状态: `G` 和 `ctx`。
 
 ```js
 {
-  // The game state (managed by you).
+  // 游戏状态 (由您管理)。
   G: {},
 
-  // Read-only metadata (managed by the framework).
+  // 只读元数据 (由框架管理)。
   ctx: {
     turn: 0,
     currentPlayer: '0',
@@ -18,26 +18,22 @@ boardgame.io captures game state in two objects: `G` and `ctx`.
 }
 ```
 
-These state objects are passed around everywhere and maintained
-on both client and server seamlessly. The state in `ctx` is
-incrementally adoptable, meaning that you can manage all the
-state manually in `G` if you so desire.
+这些状态对象随处传递, 并在客户端和服务器端无缝维护。
+`ctx` 中的状态是可增量采用的, 这意味着如果您愿意, 
+可以在 `G` 中手动管理所有状态。
 
-?> `ctx` contains other fields not shown here that games
-can take advantage of, including support for game phases and complex
-turn orders.
+?> `ctx` 包含此处未显示的其他字段, 游戏可以利用这些
+字段, 包括支持游戏阶段和复杂的回合顺序。
 
-!> Because state can be sent between client and server,
-`G` must be a JSON-serializable object; in particular, it must
-not contain classes or functions.
+!> 由于状态可以在客户端和服务器之间发送, 因此 `G` 必
+须是一个可序列化的 JSON 对象; 特别是, 它不能包含类或
+函数。
 
-### Moves
+### 移动
 
-These are functions that tell the framework how to change `G`
-when a particular game move is made. They must not depend on
-external state or have any side-effects (except modifying `G`).
-See the guide on [Immutability](immutability.md) for how
-immutability is handled by the framework.
+这些函数用于告诉框架在进行特定游戏移动时如何更改 `G`。
+这些函数不得依赖外部状态或产生任何副作用 (修改 `G` 除外)。
+有关框架如何处理不变性，请参阅[不变性](immutability.md)指南。
 
 ```js
 moves: {
@@ -50,13 +46,12 @@ moves: {
 }
 ```
 
-On the client, you use a `moves` object to dispatch your
-move functions.
+在客户端, 您可以使用 `moves` 对象来调度移动函数。
 
 <!-- tabs:start -->
-#### **Plain JS**
+#### **纯 JS**
 
-You can access `moves` from an instance of the plain JavaScript client:
+您可以从纯 JavaScript 客户端实例访问 `moves`:
 
 ```js
 client.moves.drawCard();
@@ -64,7 +59,7 @@ client.moves.drawCard();
 
 #### **React**
 
-Using React, `moves` is provided through your component’s `props`:
+使用 React 时, `moves` 是通过组件的 `props`提供的:
 
 ```js
 props.moves.drawCard();
@@ -72,14 +67,15 @@ props.moves.drawCard();
 
 <!-- tabs:end -->
 
-### Events
+### 事件
 
-These are framework-provided functions that are analogous to moves, except that they work on `ctx`. These typically advance the game state by doing things like
-ending the turn, changing the game phase etc.
-Events are dispatched from the client in a similar way to moves.
+这些都是框架提供的函数, 与移动类似, 只是它们
+在 `ctx` 上工作。这些函数通常通过结束回合、
+更改游戏阶段等操作来推进游戏状态。事件从客
+户端发出的方式与移动类似。
 
 <!-- tabs:start -->
-#### **Plain JS**
+#### **纯 JS**
 ```js
 client.events.endTurn();
 ```
@@ -90,30 +86,27 @@ props.events.endTurn();
 ```
 <!-- tabs:end -->
 
-For more details, see the guide on [Events](events.md).
+更多详情, 请参阅[事件](events.md)指南。
 
-### Phase
+### 阶段
 
-A phase is a period in the game that overrides the game
-configuration while it is active. For example, you can use
-a different set of moves or a different turn order during
-a phase. The game can transition between different phases, and turns
-occur inside phases. See the guide on [Phases](phases.md) for more details.
+阶段是游戏中的一个时期, 它在活动期间会覆盖游戏配置。
+例如, 您可以在一个阶段使用不同的移动集或不同的回合
+顺序。游戏可以在不同阶段之间转换, 回合也可以在阶段
+内进行。有关更多详细信息, 请参阅[阶段](phases.md)指南。
 
-### Turn
+### 回合
 
-A turn is a period of the game that is associated with an individual
-player. It typically consists of one or more moves made by
-that player before it passes on to another player. You can
-also allow other players to play during your turn, although
-this is less common. See the guide on
-[Turn Orders](turn-order.md) for more details.
+回合是游戏中与单个玩家相关联的一个时期。它通常由该
+玩家进行的一个或多个行动组成, 然后轮到下一个玩家。
+尽管较为少见, 但您也可以允许其他玩家在您的回合中
+进行行动。有关更多详细信息, 请参阅[回合顺序](turn-order.md)指南。
 
-### Stage
+### 步骤
 
-A stage is similar to a phase, except that it happens within a turn, and
-applies to individual players rather than the game as a whole.
-A turn may be subdivided into many stages, each allowing a different set of moves
-and overriding other game configuration options while that stage is active.
-Also, different players can be in different stages during a turn.
-See the guide on [Stages](stages.md) for more details.
+步骤类似于阶段, 但它发生在一个回合内, 并且针对的
+是单个玩家, 而非整个游戏。一个回合可以被细分为多
+个步骤, 每个步骤在其活动期间允许使用不同的行动
+集, 并会覆盖其他游戏配置选项。此外, 在一个回合
+内, 不同的玩家可能处于不同的步骤。有关更多详细
+信息, 请参阅[步骤](stages.md)指南。
