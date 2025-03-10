@@ -2,10 +2,7 @@
 
 本教程将引导您完成一个简单的井字棋游戏。
 
-?> 我们将从终端运行命令并使用 Node.js/npm。
-   如果你之前没有做过这些, 您可能需要先阅读[命令行入门指南][cmd]
-   并按照[如何安装 Node][node]。你还需要一个文本编辑器来编写代码, 
-   比如 [VS Code][vsc] 或 [Atom][atom]。
+?> 我们将从终端运行命令并使用 Node.js/npm。如果你之前没有做过这些，您可能需要先阅读[命令行入门指南][cmd]并按照[如何安装 Node 的说明操作][node]。你还需要一个文本编辑器来编写代码，比如 [VS Code][vsc] 或 [Atom][atom]。
 
 [node]: https://nodejs.dev/learn/how-to-install-nodejs
 [cmd]: https://tutorial.djangogirls.org/en/intro_to_command_line/
@@ -16,12 +13,9 @@
 
 ## 设置
 
-我们将使用 ES2015 的特性, 比如模块的 [导入](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-和[对象展开](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)
-语法, 因此我们需要使用某种构建系统来为浏览器编译我们的代码。
+我们将使用 ES2015 的特性，比如模块的[导入](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)和[对象展开](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)语法，因此我们需要使用某种构建系统来为浏览器编译我们的代码。
 
-本教程展示了两种不同的方法: 一种是使用 [React](https://reactjs.org/),
-另一种是使用基本的浏览器 API, 并通过 [Parcel](https://parceljs.org/) 编译我们的应用。
+本教程展示了两种不同的方法: 一种是使用 [React](https://reactjs.org/)，另一种是使用基本的浏览器 API，并通过 [Parcel](https://parceljs.org/) 编译我们的应用。
 你可以选择您感觉更舒服的方式。
 
 <!-- tabs:start -->
@@ -36,13 +30,11 @@ cd bgio-tutorial
 npm init --yes
 ```
 
-?> 这些命令将创建一个名为 `bgio-tutorial` 的新目录,
-   切换到该目录, 并初始化一个新的 Node 包。 
-   [在 Node 包管理器文档中了解更多。][pkgjson]
+?> 这些命令将创建一个名为 `bgio-tutorial` 的新目录，切换到该目录，并初始化一个新的 Node 包。[在 Node 包管理器文档中了解更多。][pkgjson]
 
 [pkgjson]: https://docs.npmjs.com/creating-a-package-json-file#creating-a-default-packagejson-file
 
-我们将添加 boardgame.io 和 Parcel 来帮助我们构建应用:
+我们将添加 boardgame.io 和 Parcel 来帮助我们构建应用：
 
 ```
 npm install boardgame.io
@@ -50,16 +42,16 @@ npm install --save-dev parcel-bundler
 ```
 
 
-现在, 让我们创建项目所需的基本结构:
+现在，让我们创建项目所需的基本结构:
 
 
-1. 一个用于我们 Web 应用的 JavaScript 文件位于 `src/App.js`.
+1. 一个用于我们 Web 应用的 JavaScript 文件位于 `src/App.js`。
 
 
-2. 一个用于我们游戏定义的 JavaScript 文件位于 `src/Game.js`.
+2. 一个用于我们游戏定义的 JavaScript 文件位于 `src/Game.js`。
 
 
-3. 一个基本的 HTML 页面, 用于加载我们的应用位于 `index.html`:
+3. 一个基本的 HTML 页面，用于加载我们的应用位于 `index.html`：
 
     ```html
     <!DOCTYPE html>
@@ -86,16 +78,14 @@ npm install --save-dev parcel-bundler
         ├── App.js
         └── Game.js
 
-看起来不错？好的, 让我们开始吧! 🚀
+看起来不错？好的，让我们开始吧！🚀
 
-?> 你可以查看本教程的完整代码, 并
-在 CodeSandbox 上试玩:<br/><br/>
+?> 你可以查看本教程的完整代码，并在 CodeSandbox 上试玩：<br/><br/>
 [![Edit bgio-plain-js-tutorial](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/bgio-plain-js-tutorial-ewyyt?fontsize=14&hidenavigation=1&module=%2Fsrc%2FApp.js&theme=dark)
 
 ### **React**
 
-我们将使用 [create-react-app](https://create-react-app.dev/)
-命令行工具来初始化我们的 React 应用程序, 然后将 boardgame.io 添加到其中。
+我们将使用 [create-react-app](https://create-react-app.dev/) 命令行工具来初始化我们的 React 应用程序, 然后将 boardgame.io 添加到其中。
 
 ```
 npx create-react-app bgio-tutorial
@@ -103,43 +93,28 @@ cd bgio-tutorial
 npm install boardgame.io
 ```
 
-既然我们在这里, 也让我们为游戏代码创建一个空的 JavaScript 文件：
+既然我们在这里，让我们为游戏代码也创建一个空的 JavaScript 文件：
 
 ```
 touch src/Game.js
 ```
 
-?> 您可以查看本教程的完整代码, 并
-在 CodeSandbox 上试玩:<br/><br/>
+?> 您可以查看本教程的完整代码，并在 CodeSandbox 上试玩：<br/><br/>
 [![Edit boardgame.io](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/boardgameio-wlvi2)
 
 <!-- tabs:end -->
 
 
 
-## Defining a Game
+## 定义游戏
 
-We define a game by creating an object whose contents
-tell boardgame.io how your game works. More or less everything
-is optional, so we can start simple and gradually add complexity.
-To start, we’ll add a `setup` function, which will set the
-initial value of the game state `G`, and a `moves` object
-containing the moves that make up the game.
+我们通过创建一个对象来定义游戏，该对象的内容告诉 boardgame.io 你的游戏是如何运行的。或多或少一切都是可选的，所以我们可以从简单开始，逐步增加复杂性。首先，我们将添加一个 `setup` 函数，该函数将设置游戏状态 `G` 的初始值，以及一个包含构成游戏动作的 `moves(移动)` 对象。
 
-A move is a function that updates `G` to the desired new state.
-It receives an object containing various fields
-as its first argument. This object includes the game state `G` and
-`ctx` — an object managed by boardgame.io that contains game metadata.
-It also includes `playerID`, which identifies the player making the move.
-After the object containing `G` and `ctx`, moves can receive arbitrary arguments
-that you pass in when making the move.
+移动是将 `G` 更新到所需新状态的函数。它接收一个包含多个字段的对象作为第一个参数。这个对象包括游戏状态 `G` 和 `ctx` ——一个由 boardgame.io 管理的对象，包含游戏元数据。它还包括 `playerID`，用于识别做出移动的玩家。在包含 `G` 和 `ctx` 的对象之后，moves 可以接收你在移动时传入的任意参数。
 
-In Tic-Tac-Toe, we only have one type of move and we will
-name it `clickCell`. It will take the ID of the cell that was clicked
-and update that cell with the ID of the player who clicked it.
+在井字棋中，我们只有一种移动类型，我们将其命名为 `clickCell`。它将获取被点击的单元格的 ID，并用点击该单元格的玩家 ID 更新该单元格。
 
-Let’s put this together in our `src/Game.js` file to start
-defining our game:
+让我们把这些放在 `src/Game.js` 文件中，开始定义我们的游戏：
 
 ```js
 export const TicTacToe = {
@@ -153,23 +128,18 @@ export const TicTacToe = {
 };
 ```
 
-?> The `setup` function also receives an object as its first argument
-like moves. This is useful if you need to customize the initial
-state based on some field in `ctx` — the number of players, for example —
-but we don't need that for Tic-Tac-Toe.
+?> `setup` 函数同样可以接收一个对象作为其第一个参数，比如移动。如果你需要根据 `ctx` 中的某个字段定制初始状态——例如玩家数量——但井字棋不需要这些。
 
 
-
-## Creating a Client
+## 创建客户端
 
 <!-- tabs:start -->
 
-### **Plain JS**
+### **纯 JS**
 
-We’ll start by creating a class to manage our web app’s logic in `src/App.js`.
+我们将首先在 `src/App.js` 中创建一个类来管理我们的 web 应用的逻辑。
 
-In the class’s constructor we’ll create a boardgame.io client
-and call its `start` method to run it.
+在类的构造函数中，我们将创建一个 boardgame.io 客户端，并调用其 `start` 方法来运行它。
 
 ```js
 import { Client } from 'boardgame.io/client';
